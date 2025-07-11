@@ -1,0 +1,38 @@
+[
+  {
+    "title": "JEE Physics - Theory & Problems",
+    "domain": "Engineering",
+    "type": "JEE",
+    "file": "data/engineering/jee-physics.pdf"
+  },
+  {
+    "title": "JEE Chemistry - Concept Notes",
+    "domain": "Engineering",
+    "type": "JEE",
+    "file": "data/engineering/jee-chemistry.pdf"
+  },
+  {
+    "title": "JEE Mathematics - Full Syllabus",
+    "domain": "Engineering",
+    "type": "JEE",
+    "file": "data/engineering/jee-maths.pdf"
+  },
+  {
+    "title": "Engineering Mathematics - B.R. Patil",
+    "domain": "Engineering",
+    "type": "Semester Book",
+    "file": "data/engineering/br-patil.pdf"
+  },
+  {
+    "title": "Applied Physics - M.D. Dayal",
+    "domain": "Engineering",
+    "type": "Semester Book",
+    "file": "data/engineering/md-dayal.pdf"
+  },
+  {
+    "title": "Resume Format - Engineering Internships",
+    "domain": "Engineering",
+    "type": "Resume",
+    "file": "data/engineering/resume.pdf"
+  }
+]
