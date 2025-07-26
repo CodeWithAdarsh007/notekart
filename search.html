@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Search - NoteKart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-gray-800">
+  <header class="bg-indigo-600 text-white p-4 text-xl font-bold text-center">🔍 Search Results</header>
+
+  <main class="p-4">
+    <h2 class="text-lg font-semibold mb-2">Results for: <span id="searchQuery" class="text-indigo-700"></span></h2>
+    <div id="resultsContainer" class="grid gap-4 mt-4"></div>
+  </main>
+
+  <script>
+    const query = new URLSearchParams(window.location.search).get("q") || "";
+    document.getElementById("searchQuery").textContent = query;
+
+    fetch("data/listings.json")
+      .then(res => res.json())
+      .then(data => {
+        const filtered = data.filter(item =>
+          item.title.toLowerCase().includes(query.toLowerCase()) ||
+          item.domain.toLowerCase().includes(query.toLowerCase()) ||
+          item.type.toLowerCase().includes(query.toLowerCase())
+        );
+
+        const container = document.getElementById("resultsContainer");
+        if (filtered.length === 0) {
+          container.innerHTML = `<p class="text-red-600">No results found.</p>`;
+        } else {
+          filtered.forEach(item => {
+            container.innerHTML += `
+              <div class="bg-white p-4 rounded shadow border">
+                <h3 class="font-semibold text-lg">${item.title}</h3>
+                <p class="text-sm text-gray-600">${item.domain} — ${item.type}</p>
+                <a href="${item.file}" class="text-indigo-600 underline text-sm mt-2 inline-block" target="_blank">Download</a>
+              </div>`;
+          });
+        }
+      });
+  </script>
+</body>
+</html>

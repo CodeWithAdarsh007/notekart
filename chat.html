@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NoteKart Chat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="logo.jpg" rel="icon" type="image/jpg" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f1f1f1;
+    }
+    .chat-container {
+      max-width: 600px;
+      height: 100vh;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+    }
+    .chat-header {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      background-color: #007bff;
+      color: #fff;
+      font-weight: bold;
+    }
+    .chat-header button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .message {
+      padding: 10px 15px;
+      max-width: 70%;
+      border-radius: 15px;
+      font-size: 14px;
+    }
+    .message.you {
+      background-color: #d1e7dd;
+      align-self: flex-end;
+    }
+    .message.them {
+      background-color: #f8d7da;
+      align-self: flex-start;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      font-size: 16px;
+    }
+    .chat-input button {
+      background-color: #007bff;
+      border: none;
+      color: white;
+      padding: 15px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .chat-input button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="chat-container">
+  <div class="chat-header">
+    <button onclick="history.back()" title="Go Back">
+      <i class="ph ph-arrow-left"></i>
+    </button>
+    Chat with Seller (Seller Name)
+  </div>
+
+  <div class="chat-messages" id="chatMessages">
+    <div class="message you">Hi, I’m interested in your notes.</div>
+    <div class="message them">Hello! Which subject are you looking for?</div>
+    <div class="message you">C Programming Semester 1</div>
+    <div class="message them">Yes, it's available. ₹150 for full bundle.</div>
+  </div>
+
+  <div class="chat-input">
+    <input type="text" id="msgInput" placeholder="Type your message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+  function sendMessage() {
+    const input = document.getElementById("msgInput");
+    const messageText = input.value.trim();
+    if (messageText === "") return;
+
+    const message = document.createElement("div");
+    message.classList.add("message", "you");
+    message.textContent = messageText;
+
+    document.getElementById("chatMessages").appendChild(message);
+    input.value = "";
+    input.focus();
+
+    const chatBox = document.getElementById("chatMessages");
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+</script>
+<script>
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  function handleGesture() {
+    if (touchStartX > touchEndX + 80) {
+      // Swipe Left → Go Back
+      history.back();
+    }
+  }
+
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+  });
+</script>
+
+</body>
+</html>

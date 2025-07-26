@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="" />
+  <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons for modern icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoteKart - Listing Preview</title>
+  <style>
+    body {
+      background: #f4f6f8;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .listing-container {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .listing-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .listing-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #0d6efd;
+      margin-bottom: 10px;
+    }
+    .listing-price {
+      font-size: 18px;
+      font-weight: 600;
+      color: #28a745;
+      margin-bottom: 10px;
+    }
+    .listing-location {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 15px;
+    }
+    .listing-description {
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 20px;
+    }
+    .chat-btn, .back-link {
+      display: inline-block;
+      background: #0d6efd;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+    .back-link {
+      background: #6c757d;
+    }
+  </style>
+
+    <style>
+      .nk-btn {
+        background-color: #4f46e5;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        border-radius: 9999px;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
+      .nk-btn:hover {
+        background-color: #4338ca;
+      }
+    </style>
+    
+</head>
+<body>
+  <div class="listing-container">
+    <img src="item-placeholder.jpg" alt="Item Image" class="listing-image">
+    <div class="listing-title">Engineering Drawing Notes - Semester 1</div>
+    <div class="listing-price">₹150</div>
+    <div class="listing-location">Mumbai University, Mumbai</div>
+    <div class="listing-description">
+      Well-organized handwritten notes for Engineering Drawing including all diagrams, projection methods, and assignments. Perfect for 1st-year engineering students. Slightly used and in good condition.
+    </div>
+    <a href="#" class="chat-btn">Chat with Seller</a>
+  </div>
+
+  <!-- Bottom Navigation Bar (Mobile Only) - as per wireframe -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-2 bottom-nav z-50">
+        <a href="index.html" class="text-center text-indigo-600">
+            <i class="ph-fill ph-house text-2xl"></i>
+            <span class="text-xs font-medium">Home</span>
+        </a>
+        <a href="listing.html" class="text-center text-gray-500 hover:text-indigo-600">
+            <i class="ph ph-magnifying-glass text-2xl"></i>
+            <span class="text-xs">Search</span>
+        </a>
+        <a href="upload.html" class="text-center text-gray-500 hover:text-indigo-600">
+            <div class="bg-amber-500 text-white w-14 h-14 rounded-full flex items-center justify-center -mt-8 border-4 border-white shadow-lg">
+                <i class="ph-fill ph-plus-circle text-3xl"></i>
+            </div>
+            <span class="text-xs mt-1">Post</span>
+        </a>
+        <a href="chat.html" class="text-center text-gray-500 hover:text-indigo-600">
+            <i class="ph ph-chats-circle text-2xl"></i>
+            <span class="text-xs">Chats</span>
+        </a>
+        <a href="#" onclick="goToProfile()" class="text-center text-gray-500 hover:text-indigo-600">
+            <i class="ph ph-user-circle text-2xl"></i>
+            <span class="text-xs">Profile</span>
+        </a>
+    </div>
+<script>
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  function handleGesture() {
+    if (touchStartX > touchEndX + 80) {
+      // Swipe Left → Go Back
+      history.back();
+    }
+  }
+
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+  });
+</script>
+
+</body>
+</html>

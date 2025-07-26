@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arts Resources - NoteKart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+  <header class="bg-yellow-600 text-white p-4 text-center text-xl font-bold">
+    🎨 Arts Study Material
+  </header>
+
+  <main class="p-4">
+    <!-- Subjects -->
+    <section class="mb-6">
+      <h2 class="text-lg font-semibold mb-2">Core Subjects</h2>
+      <ul class="list-disc list-inside text-sm text-yellow-700">
+        <li><a href="#" class="underline">History Notes PDF</a></li>
+        <li><a href="#" class="underline">Political Science Charts</a></li>
+        <li><a href="#" class="underline">Psychology Case Studies</a></li>
+      </ul>
+    </section>
+
+    <!-- Semester-wise -->
+    <section class="mb-6">
+      <h2 class="text-lg font-semibold mb-2">Semester-wise BA Notes</h2>
+      <ul class="grid grid-cols-2 gap-3 text-sm">
+        <li><a href="#" class="block bg-white shadow p-3 rounded hover:bg-yellow-50">Sem 1 Notes</a></li>
+        <li><a href="#" class="block bg-white shadow p-3 rounded hover:bg-yellow-50">Sem 2 Notes</a></li>
+        <li><a href="#" class="block bg-white shadow p-3 rounded hover:bg-yellow-50">Sem 3 Notes</a></li>
+        <li><a href="#" class="block bg-white shadow p-3 rounded hover:bg-yellow-50">Sem 4 Notes</a></li>
+      </ul>
+    </section>
+
+    <!-- Projects and Assignments -->
+    <section>
+      <h2 class="text-lg font-semibold mb-2">Assignments & Research Work</h2>
+      <ul class="list-disc list-inside text-sm text-yellow-700">
+        <li><a href="#" class="underline">Sample Research Papers</a></li>
+        <li><a href="#" class="underline">Essay Writing Topics</a></li>
+        <li><a href="#" class="underline">Presentation Templates</a></li>
+      </ul>
+    </section>
+  </main>
+
+<!-- Bottom Navigation Bar (Mobile Only) - as per wireframe -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-2 bottom-nav z-50">
+        <a href="index.html" class="text-center text-indigo-600">
+            <i class="ph-fill ph-house text-2xl"></i>
+            <span class="text-xs font-medium">Home</span>
+        </a>
+        <a href="listing.html" class="text-center text-gray-500 hover:text-indigo-600">
+            <i class="ph ph-magnifying-glass text-2xl"></i>
+            <span class="text-xs">Listing</span>
+        </a>
+        <a href="upload.html" class="text-center text-gray-500 hover:text-indigo-600">
+            <div class="bg-amber-500 text-white w-14 h-14 rounded-full flex items-center justify-center -mt-8 border-4 border-white shadow-lg">
+                <i class="ph-fill ph-plus-circle text-3xl"></i>
+            </div>
+            <span class="text-xs mt-1">Post</span>
+        </a>
+        <a href="chat.html" class="text-center text-gray-500 hover:text-indigo-600">
+            <i class="ph ph-chats-circle text-2xl"></i>
+            <span class="text-xs">Chats</span>
+        </a>
+        <a href="#" onclick="goToProfile()" class="text-center text-gray-500 hover:text-indigo-600">
+            <i class="ph ph-user-circle text-2xl"></i>
+            <span class="text-xs">Profile</span>
+        </a>
+    </div>
+    <script>
+  function goToProfile() {
+    const user = localStorage.getItem("currentUser");
+    if (user) {
+      window.location.href = "profile.html";
+    } else {
+      alert("Please sign up first.");
+      window.location.href = "signup.html";
+    }
+  }
+</script>
+<script>
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  function handleGesture() {
+    if (touchStartX > touchEndX + 80) {
+      // Swipe Left → Go Back
+      history.back();
+    }
+  }
+
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleGesture();
+  });
+</script>
+
+</body>
+</html>
